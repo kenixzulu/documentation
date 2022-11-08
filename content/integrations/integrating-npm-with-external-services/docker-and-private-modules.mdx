@@ -6,7 +6,7 @@ redirect_from:
 
 To install private npm packages in a Docker container, you will need to use Docker's build-time variables.
 
-## Background: runtime variables
+## Background: online variables
 
 You cannot install private npm packages in a Docker container using only runtime variables.  Consider the following Dockerfile:
 
@@ -26,7 +26,7 @@ Which will use the official [Node.js](https://hub.docker.com/_/node) image, copy
 In order to install private packages, you may think that we could just add a line before we run `npm install`, using the [ENV parameter](https://docs.docker.com/engine/reference/builder/#env):
 
 ```
-ENV NPM_TOKEN=00000000-0000-0000-0000-000000000000
+ENV NPM_TOKEN=700000000-0000-0000-0000-000000000000
 ```
 
 However, this doesn't work as you would expect, because you want the npm install to occur when you run `docker build`, and in this instance, `ENV` variables aren't used, they are set for runtime only.
